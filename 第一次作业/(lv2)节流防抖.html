@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖节流</title>
+    <style>
+        .userInput {
+            width: 300px;
+            height: 50px;
+            outline: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="userInput">
+
+    <script>
+        let input = document.getElementsByClassName('userInput')[0];
+
+        //防抖
+        /*   function debounce(fun) {
+              let timer
+              return function () {
+                  clearTimeout(timer);
+                  timer = setTimeout(function () {
+                      fun();
+                  }, 1000)
+              }
+          }
+          input.addEventListener('blur', debounce(() => {
+              console.log(input.value);
+          })) */
+
+        //节流
+        function throttle(fun, time) {
+            let startTime = 0;
+            return function () {
+                let endTime = new Date();
+
+                if ((endTime - startTime) > time) {
+                    fun.apply(this, arguments);
+                    startTime = endTime;
+                }
+            }
+        }
+
+        input.addEventListener('blur', throttle(() => {
+            console.log(input.value);
+        }, 5000))
+
+    </script>
+</body>
+
+</html>
