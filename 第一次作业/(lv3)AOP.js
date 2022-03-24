@@ -2,15 +2,15 @@
 Function.prototype.after = function (fun) {
     let _this = this;
     return function () {
-        _this();
-        fun();
+        _this.apply(this, arguments);
+        fun.apply(this, arguments);
     }
 }
 Function.prototype.before = function (fun) {
     let _this = this;
     return function () {
-        fun();
-        _this();
+        fun.apply(this, arguments);
+        return _this.apply(this, arguments);
     }
 }
 function func() {
