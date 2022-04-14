@@ -1,0 +1,12 @@
+const main = require('./js/1.cjs');
+const cart = require('./js/cart.cjs');
+const login = require('./js/login.cjs');
+import './css/admin.css';
+import './css/body.css';
+import './css/bottom.css';
+import './css/cart.css';
+import './css/common.css';
+import './css/header.css';
+import './css/lunbotu.css';
+import './css/register+login.css';
+import './iconfont/iconfont.css';
